@@ -23,8 +23,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # -------------------------------------
 def get_gmail_service():
     creds = None
-    if os.path.exists("token.json"):
-        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    if os.path.exists("/etc/secrets/token.json"):
+        creds = Credentials.from_authorized_user_file("etc/secrets/token.json", SCOPES)
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
